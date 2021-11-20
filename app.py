@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from flask_debugtoolbar import DebugToolbarExtension 
 from flask_sqlalchemy import SQLAlchemy
-from models import db, connect_db  # db is instance db = SQLAlchemy()
+from models import db, connect_db, Pet  # db is instance db = SQLAlchemy()
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///movies_example' # movies is a database name
