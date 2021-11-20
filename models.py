@@ -15,6 +15,9 @@ def connect_db(app):
 class Pet(db.Model):
     __tablename__ = 'pets'
 
+    def __repr__(self):
+        return f"< Pet, id = {self.id} name = {self.name} species = {self.species} hunger = {self.hunger}>"
+
     id = db.Column(db.Integer,
                 primary_key = True,
                 autoincrement = True)
@@ -25,3 +28,9 @@ class Pet(db.Model):
     hunger = db.Column(db.Integer, nullable = False, default = 20)
 
     # in terminal do ipython and run the command %run app.py then db.create_all() - you should see database table due to Echo config
+
+    # add custom method to update database. method does not simply update database. You have to do db.session.add(instance), and db.session.commit()
+
+    def feed(self, amt = 20):
+        self.hunger -= amt
+        self.hunger = max(self.hunger, 0)  # if hunger goes to negative value- this converts that to zero
