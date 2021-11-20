@@ -6,6 +6,10 @@ from models import db, connect_db  # db is instance db = SQLAlchemy()
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///movies_example' # movies is a database name
 
+# STEP 3 change database name in URI to associate with new database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///pet_shop_db' # 
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # To suppress the warning message you get when you run app.py file
 
 app.config['SQLALCHEMY_ECHO'] = True  # this shows all sql commands being executed in ipython terminal when you run db.session.execute('select * from movies') like command
