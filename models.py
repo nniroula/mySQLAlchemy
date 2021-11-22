@@ -12,6 +12,7 @@ def connect_db(app):
 
 # STEP 3
 
+""""
 class Pet(db.Model):
     __tablename__ = 'pets'
 
@@ -34,3 +35,27 @@ class Pet(db.Model):
     def feed(self, amt = 20):
         self.hunger -= amt
         self.hunger = max(self.hunger, 0)  # if hunger goes to negative value- this converts that to zero
+
+"""
+
+""" SQLAlchemy Associations for multiple models in SQLAlchemy """
+
+class Department(db.Model):
+    """A department has many employees. """
+    __tablename__ = "department"
+
+    dept_code = db.Column(db.Text,
+                            primary_key = True)
+    dept_name = db.Column(db.Text,
+                            nullable = False,
+                            unique = True)
+    phone = db.Column(db.Text)
+
+class Employee(db.Model):
+    """ Employee Model """
+    __tablename__ = "employess"
+    id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+    name = db.Column(db.Text, nullable = False, unique = True)
+    state = db.Column(db.Text, nullable = False, default = "CO")
+
+# these tables are not connected, now connect them, may with foreign keys
